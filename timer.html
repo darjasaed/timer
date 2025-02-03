@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Powerpuff Timer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #timer {
+            font-size: 2em;
+            margin: 20px;
+        }
+        button {
+            font-size: 1em;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Powerpuff Timer</h1>
+    <div id="timer">00:00</div>
+    <button onclick="startTimer(5)">5 Minutes</button>
+    <button onclick="startTimer(15)">15 Minutes</button>
+    <button onclick="startTimer(20)">20 Minutes</button>
+    <button onclick="resetTimer()">Reset</button>
+
+    <script>
+        let countdown;
+        let timeLeft = 0;
+
+        function startTimer(minutes) {
+            clearInterval(countdown); // Stop any running timer
+            timeLeft = minutes * 60; // Convert minutes to seconds
+            updateDisplay();
+            
+            countdown = setInterval(() => {
+                timeLeft--;
+                updateDisplay();
+                
+                if (timeLeft <= 0) {
+                    clearInterval(countdown);
+                    alert("Time's up!");
+                }
+            }, 1000);
+        }
+
+        function updateDisplay() {
+            let minutes = Math.floor(timeLeft / 60);
+            let seconds = timeLeft % 60;
+            document.getElementById("timer").innerText =
+                `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+
+        function resetTimer() {
+            clearInterval(countdown);
+            timeLeft = 0;
+            updateDisplay();
+        }
+    </script>
+
+</body>
+</html>
