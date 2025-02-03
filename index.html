@@ -10,9 +10,10 @@
             font-family: Arial, sans-serif;
             text-align: center;
             margin-top: 50px;
+            background-color: rgb(139, 250, 151);
         }
         #timer {
-            font-size: 2em;
+            font-size: 3em;
             margin: 20px;
         }
         button {
@@ -21,15 +22,19 @@
             margin: 5px;
             cursor: pointer;
         }
+        
     </style>
 </head>
 <body>
 
     <h1>Powerpuff Timer</h1>
+    <img src="image.jpg" alt="My Image" width="300">
+
     <div id="timer">00:00</div>
     <button onclick="startTimer(5)">5 Minutes</button>
     <button onclick="startTimer(15)">15 Minutes</button>
     <button onclick="startTimer(20)">20 Minutes</button>
+    <button onclick="startTimer(30)">30 Minutes</button>
     <button onclick="resetTimer()">Reset</button>
 
     <script>
